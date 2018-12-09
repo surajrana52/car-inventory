@@ -8,14 +8,22 @@
     <title>Mini Car Inventory</title>
 
     <link rel="stylesheet" href="../assests/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assests/css/custom.css">
 
 </head>
 <body>
 
 <?php
-include ('layouts/header.php');
+include('layouts/header.php');
 ?>
 
+<div class="container">
+    <div class="row">
+        <div class="background">
+            <img src="../assests/images/home-page-cars/main.jpg">
+        </div>
+    </div>
+</div>
 
 
 <script src="../assests/js/jquery-3.3.1.min.js"></script>
