@@ -19,7 +19,56 @@ include('layouts/header.php');
 
 <div class="container">
     <div class="row">
-
+        <div class="col-md-8 offset-md-2">
+            <div class="jumbotron">
+                <form id="newModel">
+                    <h1 class="display-4">Add New Model</h1>
+                    <p class="lead">Please fill all the details below</p>
+                    <div class="form-row">
+                        <div class="col">
+                            <select id="mfg" name="car_mfg" class="form-control">
+                                <option>Select Manufacturer</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" name="car_model_name" placeholder="Model Name">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" name="car_color" placeholder="Car Color">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" name="car_mfg_year" placeholder="Year of MFG">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" name="car_reg_no" placeholder="Registration Number">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" name="car_note"
+                                   placeholder="Note: Available for sale">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Image One</label>
+                            <input type="file" name="car_image_one" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Image Two</label>
+                            <input type="file" name="car_image_two" class="form-control">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <button class="btn btn-success btn-lg float-right" href="#" role="button">Save</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
