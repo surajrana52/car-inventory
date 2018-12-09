@@ -17,7 +17,7 @@
                 <a class="nav-link" href="add-model.php">Add Model</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="view-invontory.php">View Inventory</a>
+                <a class="nav-link" href="view-inventory.php">View Inventory</a>
             </li>
         </ul>
     </div>
