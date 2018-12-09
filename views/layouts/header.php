@@ -11,15 +11,14 @@
                 <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/add-manufacturer">Add Manufacturer</a>
+                <a class="nav-link" href="add-manufacturer.php">Add Manufacturer</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/add-model">Add Model</a>
+                <a class="nav-link" href="add-model.php">Add Model</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/view-invontory">View Inventory</a>
+                <a class="nav-link" href="view-invontory.php">View Inventory</a>
             </li>
-
         </ul>
     </div>
 </nav>
