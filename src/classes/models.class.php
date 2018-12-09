@@ -8,6 +8,9 @@ class Models
 
     private $db;
     public $manufacturer;
+    public $models;
+    public $modelById;
+    public $debug;
 
 
     public function __construct($DB_con)
@@ -22,13 +25,168 @@ class Models
     public function getAllManufacturers()
     {
 
-        $stmt = $this->db->prepare("SELECT * FROM car_manufacturers");
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        while ($res = $stmt->fetch()) {
+        try {
 
-            $this->manufacturer[] = $res;
+            $stmt = $this->db->prepare("SELECT * FROM car_manufacturers");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $res = $stmt->fetchAll();
+            foreach ($res as $key => $value) {
+
+                $this->manufacturer[$key] = $value;
+
+            }
+
             return true;
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
+            return false;
+
+        }
+    }
+
+
+    /**
+     * @return bool
+     */
+
+    public function getAllModels()
+    {
+
+        try {
+
+            $stmt = $this->db->prepare("SELECT car_manufacturers.manufacturer_name, car_models.id AS id, car_models.model_name, car_models.available_count FROM car_manufacturers INNER JOIN car_models ON  car_manufacturers.id = car_models.car_manufacturers_id");
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $res = $stmt->fetchAll();
+            foreach ($res as $key => $value) {
+
+                $this->models[$key] = $value;
+
+            }
+            return true;
+
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
+            return false;
+
+        }
+
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+
+    public function getModelById($id)
+    {
+
+        try {
+
+            $stmt = $this->db->prepare("SELECT * FROM car_models WHERE id = :id");
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            if ($res = $stmt->fetch()) {
+                $this->modelById = $res;
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+
+    public function sellModelById($id)
+    {
+
+        try {
+
+            $stmt = $this->db->prepare("SELECT available_count FROM car_models WHERE id = :id");
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $res = $stmt->fetch();
+
+            $this->debug = $res;
+
+            if ($res['available_count'] == 1) {
+
+                if ($this->deleteStockRecord($id)) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } else {
+
+                if ($this->updateModelStock($id)) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+
+
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
+            return false;
+
+        }
+
+    }
+
+
+    /**
+     * @param $id
+     * @return bool
+     */
+
+    private function deleteStockRecord($id)
+    {
+
+        $stmt = $this->db->prepare("DELETE FROM `car_models` WHERE id = :id");
+        $stmt->bindValue(':id', $id);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
+    /**
+     * @param $id
+     * @return bool
+     */
+
+    private function updateModelStock($id)
+    {
+
+        $stmt = $this->db->prepare("UPDATE car_models SET available_count = available_count - 1 WHERE available_count > 0 AND id = :id");
+        $stmt->bindValue(':id', $id);
+        if ($stmt->execute()) {
+
+            return true;
+
+        } else {
+            return false;
         }
 
     }
@@ -140,7 +298,7 @@ class Models
      * @return bool
      */
 
-    public function updateImageDB($imagePath, $recordId)
+    private function updateImageDB($imagePath, $recordId)
     {
 
         try {
