@@ -27,7 +27,7 @@ include('layouts/header.php');
                     <div class="form-row">
                         <div class="col">
                             <select id="mfg" name="car_mfg" required class="form-control">
-                                <option>Select Manufacturer</option>
+                                <option value="">Select Manufacturer</option>
                             </select>
                         </div>
                         <div class="col">
