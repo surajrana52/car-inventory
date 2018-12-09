@@ -7,7 +7,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
 
     $mfgName = $_POST['mfg_name'];
 
-    if ($validator->mfgName($mfgName)) {
+    if ($validator->alphaOnly($mfgName)) {
 
         if ($manufacturer->addNewManufacturer($mfgName)) {
 
