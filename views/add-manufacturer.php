@@ -19,24 +19,19 @@ include('layouts/header.php');
 
 <div class="container">
     <div class="row">
-
         <div class="col-md-6 offset-md-3">
             <div class="jumbotron">
-                <form>
+                <form id="newMfg">
                     <h1 class="display-4">Add New Manufacturer</h1>
                     <p class="lead">Please type the manufacturer name</p>
-
-
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Eg: Hyundai">
+                        <input type="text" name="mfg_name" class="form-control" required placeholder="Eg: Hyundai">
                     </div>
-
                     <hr class="my-4">
-                        <button class="btn btn-success btn-lg float-right" href="#" role="button">Save</button>
+                    <input type="submit" id="mfgSubmit" class="btn btn-success btn-lg float-right" value="Save">
                 </form>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -44,13 +39,7 @@ include('layouts/header.php');
 <script src="../assests/js/jquery-3.3.1.min.js"></script>
 <script src="../assests/js/bootstrap.min.js"></script>
 <script src="../assests/js/sweetalert.min.js"></script>
-
-<script>
-    $(document).ready(function (e) {
-        console.log("hello");
-        //swal("Hello world!");
-    });
-</script>
+<script src="../assests/js/custom/add-manufacturer.js"></script>
 
 </body>
 </html>
