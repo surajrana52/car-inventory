@@ -12,6 +12,11 @@
 </head>
 <body>
 
+<?php
+include ('layouts/header.php');
+?>
+
+
 
 <script src="../assests/js/jquery-3.3.1.min.js"></script>
 <script src="../assests/js/bootstrap.min.js"></script>
