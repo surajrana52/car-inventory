@@ -17,6 +17,12 @@ class Validator {
         }
     }
 
+
+    /**
+     * @param $value
+     * @return bool
+     */
+
     public function digitOnly($value)
     {
 
@@ -28,18 +34,28 @@ class Validator {
 
     }
 
+
+    /**
+     * @param $value
+     * @return bool
+     */
+
     public function dateYearOnly($value)
     {
 
-        return true;
-
-        /*if ( $value != '' && !preg_match('/^[0-9]{4}$/',trim($value))){
+        if ( $value != '' && !preg_match('/^[0-9]{3}$/',trim($value))){
             return true;
         }else{
             return false;
-        }*/
+        }
 
     }
+
+
+    /**
+     * @param $value
+     * @return bool
+     */
 
     public function imageValidation($value)
     {
