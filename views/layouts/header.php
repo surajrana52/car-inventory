@@ -7,16 +7,16 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="<?php echo (basename($_SERVER['PHP_SELF']) == 'index.php' ? 'nav-item active' : 'nav-item') ?>" >
                 <a class="nav-link" href="index.php">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="<?php echo (basename($_SERVER['PHP_SELF']) == 'add-manufacturer.php' ? 'nav-item active' : 'nav-item') ?>">
                 <a class="nav-link" href="add-manufacturer.php">Add Manufacturer</a>
             </li>
-            <li class="nav-item">
+            <li class="<?php echo (basename($_SERVER['PHP_SELF']) == 'add-model.php' ? 'nav-item active' : 'nav-item') ?>">
                 <a class="nav-link" href="add-model.php">Add Model</a>
             </li>
-            <li class="nav-item">
+            <li class="<?php echo (basename($_SERVER['PHP_SELF']) == 'view-inventory.php' ? 'nav-item active' : 'nav-item') ?>">
                 <a class="nav-link" href="view-inventory.php">View Inventory</a>
             </li>
         </ul>
